@@ -1,0 +1,13 @@
+{
+  "properties": [
+    {
+      "name": "search.mail.host",
+      "type": "java.lang.String",
+      "description": "Description for search.mail.host."
+    },
+    {
+      "name": "search.mail.username",
+      "type": "java.lang.String",
+      "description": "Description for search.mail.username."
+    }
+  ] }
