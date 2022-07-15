@@ -9,72 +9,58 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 
 /**
- * @description: 文章
+ * @description: 聊天记录
  * @author: 兰生
- * @date: 2022/07/14 19:02
+ * @date: 2022/07/14 19:19
  * @version: 1.0
  */
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@TableName("tb_article")
-public class Article {
+@TableName("tb_chat_record")
+public class ChatRecord {
+
     /**
-     * id
+     * 主键
      */
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
     /**
-     * 作者
+     * 用户id
      */
     private Integer userId;
 
     /**
-     * 文章分类
+     * 用户昵称
      */
-    private Integer categoryId;
+    private String nickname;
 
     /**
-     * 文章缩略图
+     * 用户头像
      */
-    private String articleCover;
+    private String avatar;
 
     /**
-     * 标题
+     * 聊天内容
      */
-    private String articleTitle;
+    private String content;
 
     /**
-     * 内容
-     */
-    private String articleContent;
-
-    /**
-     * 文章类型
+     * 类型
      */
     private Integer type;
 
     /**
-     * 原文链接
+     * 用户登录ip
      */
-    private String originalUrl;
+    private String ipAddress;
 
     /**
-     * 是否置顶
+     * ip来源
      */
-    private Integer isTop;
-
-    /**
-     * 是否删除
-     */
-    private Integer isDelete;
-
-    /**
-     * 文章状态 1.公开 2.私密 3.评论可见
-     */
-    private Integer status;
+    private String ipSource;
 
     /**
      * 创建时间
@@ -87,5 +73,6 @@ public class Article {
      */
     @TableField(fill = FieldFill.UPDATE)
     private LocalDateTime updateTime;
+
 
 }
