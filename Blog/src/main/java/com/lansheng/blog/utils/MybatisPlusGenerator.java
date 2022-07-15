@@ -64,11 +64,11 @@ public class MybatisPlusGenerator {
         // 包配置
         PackageConfig pc = new PackageConfig();
         pc.setParent("com.lansheng.blog")
-                .setEntity("entity1")
-                .setMapper("dao1")
-                .setService("service1")
-                .setServiceImpl("service1.impl")
-                .setController("controller1");
+                .setEntity("entity")
+                .setMapper("dao")
+                .setService("service")
+                .setServiceImpl("service.impl")
+                .setController("controller");
         mpg.setPackageInfo(pc);
         // 自定义配置
         InjectionConfig cfg = new InjectionConfig() {
@@ -91,7 +91,7 @@ public class MybatisPlusGenerator {
             @Override
             public String outputFile(TableInfo tableInfo) {
                 // 自定义输出文件名 ， 如果你 Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！
-                return projectPath + "/src/main/resources/mapper1/" +
+                return projectPath + "/src/main/resources/mapper/" +
                         tableInfo.getEntityName() + "Mapper"
                         + StringPool.DOT_XML;
             }
