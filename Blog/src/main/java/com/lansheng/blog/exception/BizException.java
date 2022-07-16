@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import static com.lansheng.blog.enums.StatusCodeEnum.FAIL;
 /**
- * @description:
+ * @description: 业务异常
  * @author: 兰生
  * @date: 2022/07/14 23:11
  * @version: 1.0

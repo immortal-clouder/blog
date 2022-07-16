@@ -1,11 +1,11 @@
-# ÅäÖÃ¶Ë¿Ú
+# é…ç½®ç«¯å£
 server:
   port: 8080
   servlet:
     session:
       timeout: 21600
 
-# ÅäÖÃmysqlÊı¾İ¿â
+# é…ç½®mysqlæ•°æ®åº“
 spring:
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
@@ -15,47 +15,45 @@ spring:
     password: 104567
     hikari:
       minimum-idle: 5
-      # ¿ÕÏĞÁ¬½Ó´æ»î×î´óÊ±¼ä£¬Ä¬ÈÏ600000£¨10·ÖÖÓ£©
+      # ç©ºé—²è¿æ¥å­˜æ´»æœ€å¤§æ—¶é—´ï¼Œé»˜è®¤600000ï¼ˆ10åˆ†é’Ÿï¼‰
       idle-timeout: 180000
-      # Á¬½Ó³Ø×î´óÁ¬½ÓÊı£¬Ä¬ÈÏÊÇ10
+      # è¿æ¥æ± æœ€å¤§è¿æ¥æ•°ï¼Œé»˜è®¤æ˜¯10
       maximum-pool-size: 10
-      # ´ËÊôĞÔ¿ØÖÆ´Ó³Ø·µ»ØµÄÁ¬½ÓµÄÄ¬ÈÏ×Ô¶¯Ìá½»ĞĞÎª,Ä¬ÈÏÖµ£ºtrue
+      # æ­¤å±æ€§æ§åˆ¶ä»æ± è¿”å›çš„è¿æ¥çš„é»˜è®¤è‡ªåŠ¨æäº¤è¡Œä¸º,é»˜è®¤å€¼ï¼štrue
       auto-commit: true
-      # Á¬½Ó³ØÃû³Æ
+      # è¿æ¥æ± åç§°
       pool-name: MyHikariCP
-      # ´ËÊôĞÔ¿ØÖÆ³ØÖĞÁ¬½ÓµÄ×î³¤ÉúÃüÖÜÆÚ£¬Öµ0±íÊ¾ÎŞÏŞÉúÃüÖÜÆÚ£¬Ä¬ÈÏ1800000¼´30·ÖÖÓ
+      # æ­¤å±æ€§æ§åˆ¶æ± ä¸­è¿æ¥çš„æœ€é•¿ç”Ÿå‘½å‘¨æœŸï¼Œå€¼0è¡¨ç¤ºæ— é™ç”Ÿå‘½å‘¨æœŸï¼Œé»˜è®¤1800000å³30åˆ†é’Ÿ
       max-lifetime: 1800000
-      # Êı¾İ¿âÁ¬½Ó³¬Ê±Ê±¼ä,Ä¬ÈÏ30Ãë£¬¼´30000
+      # æ•°æ®åº“è¿æ¥è¶…æ—¶æ—¶é—´,é»˜è®¤30ç§’ï¼Œå³30000
       connection-timeout: 30000
       connection-test-query: SELECT 1
-  # redisÅäÖÃ
+  # redisé…ç½®
   redis:
     host: 127.0.0.1
     port: 6379
     password: 104567
-
-
-  # mqÅäÖÃ
+  # mqé…ç½®
   rabbitmq:
-    host: 127.0.0.1 #ÄãµÄip
+    host: 127.0.0.1 #ä½ çš„ip
     port: 5672
-    username: guest #rabbitmqÓÃ»§Ãû
-    password: guest #rabbitmqÃÜÂë
+    username: guest #rabbitmqç”¨æˆ·å
+    password: guest #rabbitmqå¯†ç 
     listener:
       simple:
         retry:
           enabled: true
-          max-attempts: 3 #×î´óÖØÊÔ´ÎÊı
-          initial-interval: 3000 #ÖØÊÔ¼ä¸ôÊ±¼ä£¨µ¥Î»ºÁÃë£©
-  # esÅäÖÃ ÈôËÑË÷Ä£Ê½Îªmysql¿ÉÉ¾³ı
+          max-attempts: 3 #æœ€å¤§é‡è¯•æ¬¡æ•°
+          initial-interval: 3000 #é‡è¯•é—´éš”æ—¶é—´ï¼ˆå•ä½æ¯«ç§’ï¼‰
+  # esé…ç½® è‹¥æœç´¢æ¨¡å¼ä¸ºmysqlå¯åˆ é™¤
   #  elasticsearch:
   #    rest:
-  #      uris: ÄãµÄIP:9200
-  # ÓÊÏäÅäÖÃ
+  #      uris: ä½ çš„IP:9200
+  # é‚®ç®±é…ç½®
   mail:
     host: smtp.qq.com
     username: 2656364749@qq.com
-    password: umehbhwcfeajecia   #ÓÊÏäÊÚÈ¨Âë
+    password: umehbhwcfeajecia   #é‚®ç®±æˆæƒç 
     default-encoding: UTF-8
     port: 587
     properties:
@@ -64,60 +62,59 @@ spring:
       auth: true
       socketFactory:
       class: javax.net.ssl.SSLSocketFactory
-
-  # ÉÏ´«Í¼Æ¬´óĞ¡ÏŞÖÆ
+  # ä¸Šä¼ å›¾ç‰‡å¤§å°é™åˆ¶
   servlet:
     multipart:
       max-file-size: 100MB
       max-request-size:  100MB
 
-# ÅäÖÃMybatisPlus
+# é…ç½®MybatisPlus
 mybatis-plus:
   mapper-locations: classpath:mapper/*.xml
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
     map-underscore-to-camel-case: true
 
-# ËÑË÷Ä£Ê½ ¿ÉÑ¡ elasticsearch»òmysql
+# æœç´¢æ¨¡å¼ å¯é€‰ elasticsearchæˆ–mysql
 search:
   mode: mysql
 
 
-# ÉÏ´«Ä£Ê½ ¿ÉÑ¡ oss»òlocal  £¨http://ºÍ×îºóµÄ/Ò»¶¨²»ÄÜÈ¥£¡£¡£¡£©
+# ä¸Šä¼ æ¨¡å¼ å¯é€‰ ossæˆ–local  ï¼ˆhttp://å’Œæœ€åçš„/ä¸€å®šä¸èƒ½å»ï¼ï¼ï¼ï¼‰
 upload:
   mode: local
   local:
-    # nginxÓ³Éä±¾µØÎÄ¼şÂ·¾¶£¬ÎŞÓòÃûÔòÎª ip:83
+    # nginxæ˜ å°„æœ¬åœ°æ–‡ä»¶è·¯å¾„ï¼Œæ— åŸŸååˆ™ä¸º ip:83
     url: http://127.0.0.1:83/
-    # ±¾µØÎÄ¼ş´æ´¢Â·¾¶
+    # æœ¬åœ°æ–‡ä»¶å­˜å‚¨è·¯å¾„
     path: E:\Tools\Nginx\nginx-1.22.0\nginx-1.22.0\load_image\
 #  oss:
-#    url: http://BucketÓòÃû/
-#    endpoint: OSSÅäÖÃendpoint
-#    accessKeyId: OSSÅäÖÃaccessKeyId
-#    accessKeySecret: OSSÅäÖÃaccessKeySecret
-#    bucketName: OSSÅäÖÃbucketName
+#    url: http://BucketåŸŸå/
+#    endpoint: OSSé…ç½®endpoint
+#    accessKeyId: OSSé…ç½®accessKeyId
+#    accessKeySecret: OSSé…ç½®accessKeySecret
+#    bucketName: OSSé…ç½®bucketName
 #  cos:
-#    url: http://BucketÓòÃû/
-#    secretId: cosµÄsecretId
-#    secretKey: cosµÄsecretKey
-#    region: cosµÄregion
-#    bucketName: cosµÄbucketName
+#    url: http://BucketåŸŸå/
+#    secretId: cosçš„secretId
+#    secretKey: cosçš„secretKey
+#    region: cosçš„region
+#    bucketName: cosçš„bucketName
 
-# ÍøÕ¾Ç°Ì¨ÓòÃû£¨ÓÊ¼şÍ¨ÖªÓÃ£©
+# ç½‘ç«™å‰å°åŸŸåï¼ˆé‚®ä»¶é€šçŸ¥ç”¨ï¼‰
 website:
-  url: http://127.0.0.1  #ÄãµÄÖ÷ÓòÃû»òip
+  url: http://127.0.0.1  #ä½ çš„ä¸»åŸŸåæˆ–ip
 
-#µÚÈı·½ÅäÖÃĞÅÏ¢
+#ç¬¬ä¸‰æ–¹é…ç½®ä¿¡æ¯
 #qq:
 #  app-id: 248133214
 #  check-token-url: https://graph.qq.com/oauth2.0/me?access_token={access_token}
 #  user-info-url: https://graph.qq.com/user/get_user_info?openid={openid}&access_token={access_token}&oauth_consumer_key={oauth_consumer_key}
 #
 #weibo:
-#  app-id: Î¢²©APPID
-#  app-secret: Î¢²©APPSECRET
+#  app-id: å¾®åšAPPID
+#  app-secret: å¾®åšAPPSECRET
 #  grant-type: authorization_code
-#  redirect-url: Î¢²©»Øµ÷µØÖ·
+#  redirect-url: å¾®åšå›è°ƒåœ°å€
 #  access-token-url: https://api.weibo.com/oauth2/access_token
 #  user-info-url: https://api.weibo.com/2/users/show.json?uid={uid}&access_token={access_token}
