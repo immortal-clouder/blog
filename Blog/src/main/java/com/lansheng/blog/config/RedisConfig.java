@@ -23,15 +23,21 @@ public class RedisConfig {
     @Bean
     public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory factory) {
         RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();
+        //关联
         redisTemplate.setConnectionFactory(factory);
+        //key的序列化器采用stringRedisSerializer；value的序列化器采用Jackson2JsonRedisSerializer
+
+        //获取并设置Jackson2JsonRedisSerializer序列化器
         Jackson2JsonRedisSerializer<Object> jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer<>(Object.class);
         ObjectMapper mapper = new ObjectMapper();
         mapper.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
-        // mapper.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);
         mapper.activateDefaultTyping(LaissezFaireSubTypeValidator.instance,
                 ObjectMapper.DefaultTyping.NON_FINAL, JsonTypeInfo.As.PROPERTY);
         jackson2JsonRedisSerializer.setObjectMapper(mapper);
+        //获取stringRedisSerializer序列化器
         StringRedisSerializer stringRedisSerializer = new StringRedisSerializer();
+
+
         // key采用String的序列化方式
         redisTemplate.setKeySerializer(stringRedisSerializer);
         // hash的key也采用String的序列化方式

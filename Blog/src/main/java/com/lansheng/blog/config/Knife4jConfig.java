@@ -39,7 +39,7 @@ public class Knife4jConfig {
         return new ApiInfoBuilder()
                 .title("博客api文档")
                 .description("springboot+vue开发的博客项目")
-                .contact(new Contact("兰生", "https://github.com/X1192176811", "2656364749@qq.com"))
+                .contact(new Contact("兰生", "https://github.com/immortal-clouder/blog.git", "2656364749@qq.com"))
                 .termsOfServiceUrl("https://127.0.0.1:8080/api")
                 .version("1.0")
                 .build();
