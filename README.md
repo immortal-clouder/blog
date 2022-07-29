@@ -6,7 +6,7 @@
 
 ## 技术介绍
 
-**前端：** vue + vuex + vue-router + axios + vuetify + element + echarts（前端代码copy群里大佬仿的"Hexo"博客"Butterfly"主题）
+**前端：** vue + vuex + vue-router + axios + vuetify + element + echarts（前端代码copy群里大佬仿的"Hexo"的"Butterfly"主题博客）
 
 **后端：** SpringBoot + SpringSecurity + Swagger2 + MyBatisPlus + Mysql + Redis + RabbitMQ + nginx + docker
 
