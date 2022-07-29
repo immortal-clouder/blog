@@ -1,6 +1,6 @@
 # 配置端口
 server:
-  port: 8080
+  port: 8888
   servlet:
     session:
       timeout: 21600
@@ -28,11 +28,13 @@ spring:
       # 数据库连接超时时间,默认30秒，即30000
       connection-timeout: 30000
       connection-test-query: SELECT 1
+
   # redis配置
   redis:
     host: 127.0.0.1
     port: 6379
     password: 104567
+
   # mq配置
   rabbitmq:
     host: 127.0.0.1 #你的ip
@@ -45,10 +47,7 @@ spring:
           enabled: true
           max-attempts: 3 #最大重试次数
           initial-interval: 3000 #重试间隔时间（单位毫秒）
-  # es配置 若搜索模式为mysql可删除
-  #  elasticsearch:
-  #    rest:
-  #      uris: 你的IP:9200
+
   # 邮箱配置
   mail:
     host: smtp.qq.com
@@ -62,6 +61,7 @@ spring:
       auth: true
       socketFactory:
       class: javax.net.ssl.SSLSocketFactory
+
   # 上传图片大小限制
   servlet:
     multipart:
@@ -75,12 +75,12 @@ mybatis-plus:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
     map-underscore-to-camel-case: true
 
-# 搜索模式 可选 elasticsearch或mysql
+# 搜索模式 可选 elasticsearch或mysql，目前只有MySQL
 search:
   mode: mysql
 
 
-# 上传模式 可选 oss或local  （http://和最后的/一定不能去！！！）
+# 上传模式 可选 oss、cos或local  目前只实现了local（http://和最后的/一定不能去！！！）
 upload:
   mode: local
   local:
@@ -88,33 +88,9 @@ upload:
     url: http://127.0.0.1:83/
     # 本地文件存储路径
     path: E:\Tools\Nginx\nginx-1.22.0\nginx-1.22.0\load_image\
-#  oss:
-#    url: http://Bucket域名/
-#    endpoint: OSS配置endpoint
-#    accessKeyId: OSS配置accessKeyId
-#    accessKeySecret: OSS配置accessKeySecret
-#    bucketName: OSS配置bucketName
-#  cos:
-#    url: http://Bucket域名/
-#    secretId: cos的secretId
-#    secretKey: cos的secretKey
-#    region: cos的region
-#    bucketName: cos的bucketName
+
 
 # 网站前台域名（邮件通知用）
 website:
   url: http://127.0.0.1  #你的主域名或ip
 
-#第三方配置信息
-#qq:
-#  app-id: 248133214
-#  check-token-url: https://graph.qq.com/oauth2.0/me?access_token={access_token}
-#  user-info-url: https://graph.qq.com/user/get_user_info?openid={openid}&access_token={access_token}&oauth_consumer_key={oauth_consumer_key}
-#
-#weibo:
-#  app-id: 微博APPID
-#  app-secret: 微博APPSECRET
-#  grant-type: authorization_code
-#  redirect-url: 微博回调地址
-#  access-token-url: https://api.weibo.com/oauth2/access_token
-#  user-info-url: https://api.weibo.com/2/users/show.json?uid={uid}&access_token={access_token}

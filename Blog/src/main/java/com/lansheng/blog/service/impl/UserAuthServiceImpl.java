@@ -21,7 +21,7 @@ import static com.lansheng.blog.utils.CommonUtils.checkEmail;
 import static com.lansheng.blog.utils.CommonUtils.getRandomCode;
 
 /**
- * @description:
+ * @description: 用户账号服务
  * @author: 兰生
  * @date: 2022/07/17
  * @version: 1.0

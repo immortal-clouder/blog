@@ -6,7 +6,7 @@ import static com.lansheng.blog.enums.StatusCodeEnum.*;
 /**
  * @description:
  * @author: 兰生
- * @date: 2022/07/14 22:44
+ * @date: 2022/07/14
  * @version: 1.0
  */
 @Data

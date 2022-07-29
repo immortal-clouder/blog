@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * @description:
+ * @description: 邮件
  * @author: 兰生
  * @date: 2022/07/16
  * @version: 1.0

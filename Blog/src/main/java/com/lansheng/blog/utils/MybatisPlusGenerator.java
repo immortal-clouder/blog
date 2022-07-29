@@ -16,7 +16,7 @@ import java.util.*;
 /**
  * @description: mybatis-plus逆向工程
  * @author: 兰生
- * @date: 2022/07/14 19:32
+ * @date: 2022/07/14
  * @version: 1.0
  */
 public class MybatisPlusGenerator {

@@ -14,7 +14,7 @@ import java.util.Set;
 /**
  * @description: redis工具类接口
  * @author: 兰生
- * @date: 2022/07/15 13:11
+ * @date: 2022/07/15
  * @version: 1.0
  */
 @SuppressWarnings("all")  //作用：用于抑制编译器产生警告信息。参数all，抑制所有警告

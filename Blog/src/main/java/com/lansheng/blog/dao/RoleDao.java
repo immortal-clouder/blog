@@ -2,7 +2,11 @@ package com.lansheng.blog.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.lansheng.blog.dto.ResourceRoleDTO;
+import com.lansheng.blog.dto.RoleDTO;
+import com.lansheng.blog.entity.Role;
 import com.lansheng.blog.entity.UserRole;
+import com.lansheng.blog.vo.ConditionVO;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -14,7 +18,7 @@ import java.util.List;
  * @version: 1.0
  */
 @Repository
-public interface RoleDao extends BaseMapper<UserRole> {
+public interface RoleDao extends BaseMapper<Role> {
     /**
      * @description: 根据用户id查询用户的角色标签
      * @author: 兰生
@@ -33,4 +37,14 @@ public interface RoleDao extends BaseMapper<UserRole> {
      * @return: ResourceRoleDTO
      **/
     List<ResourceRoleDTO> listResourceRoles();
+
+    /**
+     * 查询角色列表
+     *
+     * @param current     页码
+     * @param size        条数
+     * @param conditionVO 条件
+     * @return 角色列表
+     */
+    List<RoleDTO> listRoles(@Param("current") Long current, @Param("size") Long size, @Param("conditionVO") ConditionVO conditionVO);
 }

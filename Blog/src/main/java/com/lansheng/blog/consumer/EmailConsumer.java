@@ -24,7 +24,7 @@ import static com.lansheng.blog.constant.MQPrefixConst.EMAIL_QUEUE;
 public class EmailConsumer {
 
     /**
-     * 读取配置文件中的邮箱账号
+     * 读取配置文件中用于发送邮件的邮箱账号
      */
     @Value("${spring.mail.username}")
     private String email;

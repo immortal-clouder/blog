@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 /**
  * @description: 用户工具类
  * @author: 兰生
- * @date: 2022/07/15 22:05
+ * @date: 2022/07/15
  * @version: 1.0
  */
 @Component
