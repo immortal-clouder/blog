@@ -27,6 +27,44 @@
         LIMIT #{current},#{size}
     </select>
 
+<!--    MySQL8.0以上支持row_number() over窗口函数实现分组排序，使用以下代码-->
+<!--    <select id="listReplies" resultType="com.lansheng.blog.dto.ReplyDTO">-->
+<!--        SELECT-->
+<!--        *-->
+<!--        FROM-->
+<!--        (-->
+<!--        SELECT-->
+<!--        c.user_id,-->
+<!--        u.nickname,-->
+<!--        u.avatar,-->
+<!--        u.web_site,-->
+<!--        c.reply_user_id,-->
+<!--        r.nickname AS reply_nickname,-->
+<!--        r.web_site AS reply_web_site,-->
+<!--        c.id,-->
+<!--        c.parent_id,-->
+<!--        c.comment_content,-->
+<!--        c.create_time,-->
+<!--        row_number () over ( PARTITION BY parent_id ORDER BY create_time ASC ) row_num-->
+<!--        FROM-->
+<!--        tb_comment c-->
+<!--        JOIN tb_user_info u ON c.user_id = u.id-->
+<!--        JOIN tb_user_info r ON c.reply_user_id = r.id-->
+<!--        WHERE-->
+<!--        c.is_review = 1-->
+<!--        AND-->
+<!--        parent_id IN-->
+<!--        (-->
+<!--        <foreach collection="commentIdList" item="commentId" separator=",">-->
+<!--            #{commentId}-->
+<!--        </foreach>-->
+<!--        )-->
+<!--        ) t-->
+<!--        WHERE-->
+<!--        4 > row_num-->
+<!--    </select>-->
+
+<!--    MySQL8.0以下的就用这个代码实现分组排序-->
     <select id="listReplies" resultType="com.lansheng.blog.dto.ReplyDTO">
         SELECT
         *
@@ -44,7 +82,10 @@
         c.parent_id,
         c.comment_content,
         c.create_time,
-        row_number () over ( PARTITION BY parent_id ORDER BY create_time ASC ) row_num
+        @rownum:=@rownum+1,
+        @rownum:=@rownum+1 rownum,
+        if(@mno=c.parent_id or (@mno is null and c.parent_id is null),
+        @rank:=@rank+1,@rank:=1) as row_num
         FROM
         tb_comment c
         JOIN tb_user_info u ON c.user_id = u.id
@@ -52,12 +93,8 @@
         WHERE
         c.is_review = 1
         AND
-        parent_id IN
-        (
-        <foreach collection="commentIdList" item="commentId" separator=",">
-            #{commentId}
-        </foreach>
-        )
+        parent_id = 729
+        ORDER BY c.parent_id,c.create_time asc
         ) t
         WHERE
         4 > row_num
