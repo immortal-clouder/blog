@@ -117,8 +117,8 @@ public class PhotoController {
      */
     @ApiOperation(value = "根据相册id查看照片列表")
     @GetMapping("/albums/{albumId}/photos")
-    public Result<PhotoDTO> listPhotosByAlbumId(@PathVariable("albumId") Integer albumId) {
-        return Result.ok(photoService.listPhotosByAlbumId(albumId));
+    public Result<PhotoDTO> listPhotosByAlbumId(@PathVariable("albumId") Integer albumId,@RequestParam(value="current", required=true) long current) {
+        return Result.ok(photoService.listPhotosByAlbumId(albumId,current));
     }
 
 }

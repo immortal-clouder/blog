@@ -1,6 +1,6 @@
 # 配置端口
 server:
-  port: 8888
+  port: 8080
   servlet:
     session:
       timeout: 21600
@@ -10,9 +10,9 @@ spring:
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/blog_feng?serverTimezone=Asia/Shanghai&allowMultiQueries=true
-    username: root
-    password: 104567
+    url: jdbc:mysql://你的ip:3306/blog?serverTimezone=Asia/Shanghai&allowMultiQueries=true
+    username: MYSQL用户名
+    password: MYSQL密码
     hikari:
       minimum-idle: 5
       # 空闲连接存活最大时间，默认600000（10分钟）
@@ -28,19 +28,17 @@ spring:
       # 数据库连接超时时间,默认30秒，即30000
       connection-timeout: 30000
       connection-test-query: SELECT 1
-
   # redis配置
   redis:
-    host: 127.0.0.1
+    host: 你的ip
     port: 6379
-    password: 104567
-
+    password: Redis密码
   # mq配置
   rabbitmq:
-    host: 127.0.0.1 #你的ip
+    host: 你的ip
     port: 5672
-    username: guest #rabbitmq用户名
-    password: guest #rabbitmq密码
+    username: rabbitmq用户名
+    password: rabbitmq密码
     listener:
       simple:
         retry:
@@ -51,8 +49,8 @@ spring:
   # 邮箱配置
   mail:
     host: smtp.qq.com
-    username: 2656364749@qq.com
-    password: umehbhwcfeajecia   #邮箱授权码
+    username: 邮箱用户名
+    password: 邮箱授权码
     default-encoding: UTF-8
     port: 587
     properties:
@@ -61,7 +59,6 @@ spring:
       auth: true
       socketFactory:
       class: javax.net.ssl.SSLSocketFactory
-
   # 上传图片大小限制
   servlet:
     multipart:
@@ -75,22 +72,20 @@ mybatis-plus:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
     map-underscore-to-camel-case: true
 
-# 搜索模式 可选 elasticsearch或mysql，目前只有MySQL
+# 搜索模式
 search:
   mode: mysql
 
 
-# 上传模式 可选 oss、cos或local  目前只实现了local（http://和最后的/一定不能去！！！）
+# 上传模式 local  （http://和最后的/一定不能去！！！）
 upload:
   mode: local
   local:
     # nginx映射本地文件路径，无域名则为 ip:83
-    url: http://127.0.0.1:83/
+    url: http://你的文件上传子域名/
     # 本地文件存储路径
-    path: E:\Tools\Nginx\nginx-1.22.0\nginx-1.22.0\load_image\
-
+    path: /usr/local/upload/
 
 # 网站前台域名（邮件通知用）
 website:
-  url: http://127.0.0.1  #你的主域名或ip
-
+  url: http://你的主域名或ip

@@ -116,7 +116,7 @@ public class PhotoServiceImpl extends ServiceImpl<PhotoDao, Photo> implements Ph
     }
 
     @Override
-    public PhotoDTO listPhotosByAlbumId(Integer albumId) {
+    public PhotoDTO listPhotosByAlbumId(Integer albumId,long current) {
         // 查询相册信息
         PhotoAlbum photoAlbum = photoAlbumService.getOne(new LambdaQueryWrapper<PhotoAlbum>()
                 .eq(PhotoAlbum::getId, albumId)
@@ -126,7 +126,7 @@ public class PhotoServiceImpl extends ServiceImpl<PhotoDao, Photo> implements Ph
             throw new BizException("相册不存在");
         }
         // 查询照片列表
-        Page<Photo> page = new Page<>(PageUtils.getCurrent(), PageUtils.getSize());
+        Page<Photo> page = new Page<>((current-1)*PageUtils.getSize(), PageUtils.getSize());
         List<String> photoList = photoDao.selectPage(page, new LambdaQueryWrapper<Photo>()
                         .select(Photo::getPhotoSrc)
                         .eq(Photo::getAlbumId, albumId)

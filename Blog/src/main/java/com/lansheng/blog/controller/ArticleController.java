@@ -51,8 +51,8 @@ public class ArticleController {
      */
     @ApiOperation(value = "查看首页文章")
     @GetMapping("/articles")
-    public Result<List<ArticleHomeDTO>> listArticles() {
-        return Result.ok(articleService.listArticles());
+    public Result<List<ArticleHomeDTO>> listArticles(@RequestParam(value="current", required=true) long current) {
+        return Result.ok(articleService.listArticles(current));
     }
 
     /**

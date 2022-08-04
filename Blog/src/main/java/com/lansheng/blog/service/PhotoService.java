@@ -65,6 +65,6 @@ public interface PhotoService extends IService<Photo> {
      * @param albumId 相册id
      * @return {@link List<PhotoDTO>} 照片列表
      */
-    PhotoDTO listPhotosByAlbumId(Integer albumId);
+    PhotoDTO listPhotosByAlbumId(Integer albumId,long current);
 
 }

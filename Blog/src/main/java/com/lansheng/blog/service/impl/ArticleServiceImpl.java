@@ -103,14 +103,16 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleDao, Article> impleme
     }
 
     @Override
-    public List<ArticleHomeDTO> listArticles() {
-        return articleDao.listArticles(PageUtils.getLimitCurrent(), PageUtils.getSize());
+    public List<ArticleHomeDTO> listArticles(long current) {
+
+        return articleDao.listArticles((current-1)*PageUtils.getSize(), PageUtils.getSize());
+        //return articleDao.listArticles((long) 0, PageUtils.getSize());
     }
 
     @Override
     public ArticlePreviewListDTO listArticlesByCondition(ConditionVO condition) {
         // 查询文章
-        List<ArticlePreviewDTO> articlePreviewDTOList = articleDao.listArticlesByCondition(PageUtils.getLimitCurrent(), PageUtils.getSize(), condition);
+        List<ArticlePreviewDTO> articlePreviewDTOList = articleDao.listArticlesByCondition((condition.getCurrent()-1)*PageUtils.getSize(), PageUtils.getSize(), condition);
         // 搜索条件对应名(标签或分类名)
         String name;
         if (Objects.nonNull(condition.getCategoryId())) {
