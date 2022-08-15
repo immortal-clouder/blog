@@ -137,6 +137,7 @@ public class CommentServiceImpl extends ServiceImpl<CommentDao, Comment> impleme
         commentDao.insert(comment);
         // 判断是否开启邮箱通知,通知用户
         if (websiteConfig.getIsEmailNotice().equals(TRUE)) {
+            //CompletableFuture的runAsync只是简单的异步执行一个线程，但是它将返回一个CompletableFuture，有了这个CompletableFuture，可以重新组装和调配
             CompletableFuture.runAsync(() -> notice(comment));
         }
     }

@@ -39,7 +39,6 @@ public class CommentController {
     @ApiOperation(value = "查询评论")
     @GetMapping("/comments")
     public Result<PageResult<CommentDTO>> listComments(CommentVO commentVO) {
-
         return Result.ok(commentService.listComments(commentVO));
     }
 

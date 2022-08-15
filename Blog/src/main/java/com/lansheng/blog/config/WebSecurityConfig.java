@@ -44,7 +44,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return new FilterInvocationSecurityMetadataSourceImpl();
     }
 
-    //访问决策管理器，授权用的
+    //访问决策管理器，鉴权用的
     @Bean
     public AccessDecisionManager accessDecisionManager() {
         return new AccessDecisionManagerImpl();
@@ -88,13 +88,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutUrl("/logout")
                 .logoutSuccessHandler(logoutSuccessHandler);
 
-        // 配置路由权限信息,授权
+        // 配置路由权限信息,鉴权
         http.authorizeRequests()
                 .withObjectPostProcessor(new ObjectPostProcessor<FilterSecurityInterceptor>() {
                     @Override
                     public <O extends FilterSecurityInterceptor> O postProcess(O fsi) {
-                        fsi.setSecurityMetadataSource(securityMetadataSource());
-                        fsi.setAccessDecisionManager(accessDecisionManager());
+                        fsi.setSecurityMetadataSource(securityMetadataSource()); //设置接口拦截规则
+                        fsi.setAccessDecisionManager(accessDecisionManager());  //设置访问决策管理器，真正的鉴权操作在这里完成
                         return fsi;
                     }
                 })

@@ -33,7 +33,7 @@ public class RabbitMQConfig {
     public FanoutExchange emailExchange() {
         return new FanoutExchange(EMAIL_EXCHANGE, true, false);
     }
-
+    //将队列与交换机绑定,可以使用.with()设置匹配routeKey
     @Bean
     public Binding bindingEmailDirect() {
         return BindingBuilder.bind(emailQueue()).to(emailExchange());

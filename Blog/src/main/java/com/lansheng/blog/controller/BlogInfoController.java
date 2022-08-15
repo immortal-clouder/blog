@@ -47,7 +47,6 @@ public class BlogInfoController {
     @ApiOperation(value = "查看博客信息")
     @GetMapping("/")
     public Result<BlogHomeInfoDTO> getBlogHomeInfo() {
-        System.out.println(blogInfoService.getBlogHomeInfo());
         return Result.ok(blogInfoService.getBlogHomeInfo());
     }
 
@@ -69,7 +68,7 @@ public class BlogInfoController {
      * @return {@link Result<String>} 博客配置图片
      */
     @ApiOperation(value = "上传博客配置图片")
-    @ApiImplicitParam(name = "file", value = "图片", required = true, dataType = "MultipartFile")
+    @ApiImplicitParam(name = "file", value = "图片", required = true, dataType = "MultipartFile") //MultipartFile是SpringMVC提供简化上传操作的工具类
     @PostMapping("/admin/config/images")
     public Result<String> savePhotoAlbumCover(MultipartFile file) {
         return Result.ok(uploadStrategyContext.executeUploadStrategy(file, FilePathEnum.CONFIG.getPath()));

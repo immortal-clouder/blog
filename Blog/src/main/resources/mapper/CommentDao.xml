@@ -27,7 +27,7 @@
         LIMIT #{current},#{size}
     </select>
 
-<!--    MySQL8.0以上支持row_number() over窗口函数实现分组排序，使用以下代码-->
+    MySQL8.0以上支持row_number() over窗口函数实现分组排序，使用以下代码
 <!--    <select id="listReplies" resultType="com.lansheng.blog.dto.ReplyDTO">-->
 <!--        SELECT-->
 <!--        *-->
@@ -93,7 +93,12 @@
         WHERE
         c.is_review = 1
         AND
-        parent_id = 729
+        parent_id IN
+        (
+        <foreach collection="commentIdList" item="commentId" separator=",">
+            #{commentId}
+        </foreach>
+        )
         ORDER BY c.parent_id,c.create_time asc
         ) t
         WHERE
